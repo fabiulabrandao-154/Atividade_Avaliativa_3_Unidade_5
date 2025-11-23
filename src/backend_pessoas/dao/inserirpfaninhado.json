@@ -1,21 +1,22 @@
 {
-  "nome": "Leandro Vaguetti 3 ",
-  "email": "leandro@ifb.edu.br",
-  "cpf": "12345678903",
-  "endereco": {
-    "cep": "71000-000",
-    "logradouro": "Rua das Palmeiras",
-    "bairro": "Centro",
-    "cidade": "Brasília",
-    "uf": "DF",
-    "regiao": "Centro-Oeste"
-  },
-  "telefones": [
-    { "ddd": "61", "numero": "998887776" }
-  ],
-  "titulo": {
-    "numero": "123456",
-    "zona": "001",
-    "secao": "002"
+    "nome": "Leandro Vaguetti 3 ",
+    "email": "leandro@ifb.edu.br",
+    "data": "2025-01-12T00:00:00Z",
+    "cpf": "12345678903",
+    "endereco": {
+      "cep": "71000-000",
+      "logradouro": "Rua das Palmeiras",
+      "bairro": "Centro",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "regiao": "Centro-Oeste"
+    },
+    "telefones": [
+      { "ddd": "61", "numero": "998887776" }
+    ],
+    "titulo": {
+      "numero": "123456",
+      "zona": "001",
+      "secao": "002"
+    }
   }
-}
