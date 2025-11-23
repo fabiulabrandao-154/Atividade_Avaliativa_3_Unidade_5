@@ -69,11 +69,28 @@ export default function VisualizaPessoa() {
           <Descriptions.Item label="E-mail">{pessoa.email}</Descriptions.Item>
 
           {tipo === "PF" ? (
-            <Descriptions.Item label="CPF">{pessoa.cpf}</Descriptions.Item>
+            <>
+              <Descriptions.Item label="CPF">{pessoa.cpf}</Descriptions.Item>
+
+              {/* 🔹 Data de Nascimento */}
+              <Descriptions.Item label="Data de Nascimento">
+                {pessoa.dataNascimento}
+                  ? new Date(pessoa.dataNascimento).toLocaleDateString()
+                  : "Não informado" 
+              </Descriptions.Item>
+            </>
           ) : (
-            <Descriptions.Item label="CNPJ">{pessoa.cnpj}</Descriptions.Item>
+            <>
+              <Descriptions.Item label="CNPJ">{pessoa.cnpj}</Descriptions.Item>
+
+              {/* 🔹 Data de Registro da PJ */}
+              <Descriptions.Item label="Data de Registro">
+              {pessoa.ie.dataRegistro}
+              </Descriptions.Item>
+            </>
           )}
 
+          {/* Endereço */}
           <Descriptions.Item label="Endereço">
             {pessoa.endereco?.logradouro}, {pessoa.endereco?.bairro} -{" "}
             {pessoa.endereco?.cidade}/{pessoa.endereco?.uf}
@@ -81,6 +98,7 @@ export default function VisualizaPessoa() {
             CEP: {pessoa.endereco?.cep} | Região: {pessoa.endereco?.regiao}
           </Descriptions.Item>
 
+          {/* Telefones */}
           <Descriptions.Item label="Telefones">
             {pessoa.telefones?.length > 0
               ? pessoa.telefones
@@ -89,18 +107,23 @@ export default function VisualizaPessoa() {
               : "Não informado"}
           </Descriptions.Item>
 
+          {/* Campos específicos */}
           {tipo === "PF" ? (
-            <Descriptions.Item label="Título Eleitoral">
-              {pessoa.titulo?.numero
-                ? `Nº ${pessoa.titulo.numero} - Zona ${pessoa.titulo.zona} / Seção ${pessoa.titulo.secao}`
-                : "Não informado"}
-            </Descriptions.Item>
+            <>
+              <Descriptions.Item label="Título Eleitoral">
+                {pessoa.titulo?.numero
+                  ? `Nº ${pessoa.titulo.numero} - Zona ${pessoa.titulo.zona} / Seção ${pessoa.titulo.secao}`
+                  : "Não informado"}
+              </Descriptions.Item>
+            </>
           ) : (
-            <Descriptions.Item label="Inscrição Estadual">
-              {pessoa.ie?.numero
-                ? `Nº ${pessoa.ie.numero} - ${pessoa.ie.estado} (${pessoa.ie.dataRegistro})`
-                : "Não informado"}
-            </Descriptions.Item>
+            <>
+              <Descriptions.Item label="Inscrição Estadual">
+                {pessoa.ie?.numero
+                  ? `Nº ${pessoa.ie.numero} - ${pessoa.ie.estado}`
+                  : "Não informado"}
+              </Descriptions.Item>
+            </>
           )}
         </Descriptions>
 
@@ -117,4 +140,5 @@ export default function VisualizaPessoa() {
       </Card>
     </div>
   );
+
 }
