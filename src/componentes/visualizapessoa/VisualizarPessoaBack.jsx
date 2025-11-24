@@ -75,8 +75,7 @@ export default function VisualizaPessoa() {
               {/* 🔹 Data de Nascimento */}
               <Descriptions.Item label="Data de Nascimento">
                 {pessoa.dataNascimento}
-                  ? new Date(pessoa.dataNascimento).toLocaleDateString()
-                  : "Não informado" 
+                {new Date(pessoa.dataNascimento).toLocaleDateString()}
               </Descriptions.Item>
             </>
           ) : (
@@ -142,3 +141,4 @@ export default function VisualizaPessoa() {
   );
 
 }
+
