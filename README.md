@@ -1,90 +1,90 @@
-📋 CRUD Pessoas (PF e PJ) — Integração com Backend
+# 📝 Atividade – CRUD Pessoas (PF e PJ) com Integração ao BackEnd
 
-Este projeto implementa as adaptações necessárias para permitir que datas de nascimento (Pessoa Física) e datas de registro (Pessoa Jurídica) sejam corretamente armazenadas, carregadas e manipuladas no backend Pessoas, conforme requisitos da atividade.
+Considere os arquivos e repositórios a seguir como base para a realização da atividade:
 
-📚 Referências Utilizadas
-
-A atividade foi desenvolvida tomando como base os seguintes repositórios:
-
-Frontend base ReactJS
+1) Repositório base do FrontEnd  
 👉 https://github.com/vaguettibfd/ReactJSBFD
 
-Documentação e backend da atividade
-👉 https://github.com/vaguettibfd/backend_pessoas
+2) Readme base do BackEnd (Pessoas)  
+👉 https://github.com/vaguettibfd/backend_pessoas  
 
-Versão do CRUD Pessoas (PF e PJ) com integração via API
-O backend implementa a classe PessoaBase, que contém o campo data, herdado tanto por PF quanto por PJ.
+3) Versão do CRUD Pessoas (PF e PJ) com integração ao BackEnd (Pessoas)
 
-Para PF, esse campo representa a data de nascimento
+---
 
-Para PJ, representa a data de registro
+## 🎯 Objetivo da Atividade
 
-🎯 Objetivo da Atividade
+Implementar, de forma complementar, os objetos e formulários necessários para que:
 
-Implementar os objetos, componentes e formulários necessários para que:
+- **a data de nascimento da Pessoa Física (PF)**  
+- **a data de registro da Pessoa Jurídica (PJ)**  
 
-A data de nascimento da Pessoa Física (PF)
+sejam **armazenadas e gerenciadas corretamente pelo BackEnd**, utilizando o atributo **`data`** existente em `PessoaBase` (herdado por PF e PJ).
 
-A data de registro da Pessoa Jurídica (PJ)
+📌 **Importante:**  
+O campo `data` do backend deve ser tratado como:  
+- **Data de Nascimento** → para PF  
+- **Data de Registro** → para PJ  
 
-sejam:
+---
 
-✔️ Armazenadas corretamente no backend
-✔️ Convertidas adequadamente entre frontend ↔ backend
-✔️ Editáveis no formulário
-✔️ Exibidas na visualização
-✔️ Consistentes com o campo data da classe PessoaBase
+# ✅ Implementação Concluída
 
-✅ Implementação Concluída
+As adaptações foram realizadas com sucesso para garantir o correto envio, recebimento, exibição e edição das datas no sistema integrado ao backend.
 
-A seguir, o resumo das adaptações realizadas:
+---
 
-🔧 1. Alterações nos DAOs
-PFDAOBackEnd.mjs
+## 📦 Alterações nos DAOs (Integração BackEnd)
 
-mapPF()
-Converte pf.data recebido do backend para dataNascimento no frontend.
+### **PFDAOBackEnd.mjs**
+#### ✔ `mapPF()`  
+- Mapeia o campo **`pf.data`** recebido do backend para **`dataNascimento`** no frontend.  
 
-toPlain()
-Envia dataNascimento do frontend como data para o backend.
+#### ✔ `toPlain()`  
+- Converte **`dataNascimento`** do frontend para o campo **`data`** esperado pelo backend ao salvar ou atualizar.
 
-PJDAOBackEnd.mjs
+---
 
-mapPJ()
-Mapeia pj.data do backend para dataRegistro no frontend.
+### **PJDAOBackEnd.mjs**
+#### ✔ `mapPJ()`  
+- Mapeia **`pj.data`** do backend para **`dataRegistro`** no frontend.  
 
-toPlain()
-Converte dataRegistro do frontend para o campo data ao enviar ao backend.
+#### ✔ `toPlain()`  
+- Converte **`dataRegistro`** do frontend para **`data`**, enviando corretamente ao backend.
 
-🧩 2. Alterações no Formulário
-PessoaFormBack.jsx
-✔️ Carregamento
+---
 
-Ao editar um registro:
+## 📝 Alterações no Formulário (PessoaFormBack.jsx)
 
-As datas vindas do backend (YYYY-MM-DD) são convertidas em objetos dayjs.
+### ✔ Carregamento (edição)
+- Converte a data recebida do backend (string) para um objeto **dayjs**, permitindo exibição correta no campo de data.
 
-✔️ Salvamento
+### ✔ Salvamento
+- Converte a data selecionada no formulário (dayjs) para o formato **`YYYY-MM-DD`** antes de enviar ao backend.
 
-Processamento da data antes de enviar:
+### ✔ Regras aplicadas
+- Para PF → chama **`pf.setDataNascimento()`**  
+- Para PJ → chama **`pj.setDataRegistro()`**
 
-Para PF:
+---
 
-Converte para YYYY-MM-DD
+## 👁️ Visualização (VisualizarPessoaBack.jsx)
 
-Chama pf.setDataNascimento()
+### ✔ PF – Pessoa Física
+- Exibe a **data de nascimento** formatada corretamente.
 
-Para PJ:
+### ✔ PJ – Pessoa Jurídica
+- Exibe a **data de registro** formatada.
 
-Converte para YYYY-MM-DD
+---
 
-Chama pj.setDataRegistro()
+# 📌 Resultado Final
 
-👁️ 3. Visualização
-VisualizarPessoaBack.jsx
+O sistema agora gerencia corretamente o campo **`data`** do backend, atendendo completamente ao solicitado na atividade:
 
-PF → exibe Data de Nascimento formatada
+- PF → `data` interpretada como **data de nascimento**  
+- PJ → `data` interpretada como **data de registro**  
+- CRUD totalmente funcional com integração ao backend  
+- Datas convertidas, exibidas, salvas e atualizadas corretamente
 
-PJ → exibe Data de Registro formatada
-
-O frontend trata corretamente o campo data retornado pelo backend conforme o tipo de pessoa.
+---
